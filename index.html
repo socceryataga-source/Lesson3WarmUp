@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recipe Relay</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section id="homeScreen" class="screen active">
+      <div class="hero-card">
+        <p class="eyebrow">PAIR LISTENING GAME</p>
+        <h1>Recipe Relay</h1>
+        <p class="lead">One student reads. One student cooks. Listen carefully and build the dish in the correct order.</p>
+        <div class="rule-grid">
+          <div class="rule"><span>1</span><p>Choose your role.</p></div>
+          <div class="rule"><span>2</span><p>Use the same Recipe Code.</p></div>
+          <div class="rule"><span>3</span><p>Do not show your screen.</p></div>
+        </div>
+        <div class="home-actions">
+          <button class="primary" data-role="reader">👨‍🍳 Student A — Read</button>
+          <button class="secondary" data-role="cook">🥣 Student B — Cook</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="setupScreen" class="screen">
+      <div class="panel compact">
+        <button class="text-btn" id="backHome">← Back</button>
+        <p class="eyebrow" id="setupRoleLabel">STUDENT A</p>
+        <h2>Choose a Recipe Code</h2>
+        <p class="muted">Both partners must choose the same code. The recipe name is hidden from the cook.</p>
+        <div id="codeGrid" class="code-grid"></div>
+      </div>
+    </section>
+
+    <section id="readerScreen" class="screen">
+      <div class="topbar">
+        <div>
+          <p class="eyebrow">STUDENT A — READER</p>
+          <h2 id="readerTitle">Recipe</h2>
+        </div>
+        <div class="code-badge">Code <strong id="readerCode">A</strong></div>
+      </div>
+      <div class="reader-layout">
+        <div class="panel recipe-card">
+          <p class="instruction">Read these steps aloud. Do not show your screen.</p>
+          <ol id="recipeSteps" class="recipe-steps"></ol>
+        </div>
+        <div class="panel phrase-card">
+          <h3>Useful phrases</h3>
+          <p>Could you say that again?</p>
+          <p>What comes next?</p>
+          <p>Did you say ___?</p>
+          <p>Where should I put it?</p>
+        </div>
+      </div>
+      <div class="footer-actions">
+        <button class="secondary" id="readerChange">Change code</button>
+        <button class="primary" id="readerSwitch">Switch roles</button>
+      </div>
+    </section>
+
+    <section id="cookScreen" class="screen">
+      <div class="topbar">
+        <div>
+          <p class="eyebrow">STUDENT B — COOK</p>
+          <h2>Build the dish</h2>
+        </div>
+        <div class="code-badge">Code <strong id="cookCode">A</strong></div>
+      </div>
+
+      <div class="cook-layout">
+        <aside class="panel ingredient-panel">
+          <div class="section-heading">
+            <h3>Ingredients</h3>
+            <span class="tiny">Tap in the order you hear.</span>
+          </div>
+          <div id="ingredientGrid" class="ingredient-grid"></div>
+        </aside>
+
+        <section class="panel bowl-panel">
+          <div class="section-heading">
+            <h3>Your dish</h3>
+            <span class="tiny" id="stepCounter">0 steps</span>
+          </div>
+          <div id="dishStage" class="dish-stage">
+            <div class="plate-shadow"></div>
+            <div class="plate"></div>
+            <div id="dishLayers" class="dish-layers"></div>
+          </div>
+          <div id="sequenceTray" class="sequence-tray"></div>
+          <div class="cook-buttons">
+            <button class="ghost" id="undoBtn">Undo</button>
+            <button class="ghost" id="resetBtn">Reset</button>
+            <button class="primary" id="finishBtn">Finish Cooking!</button>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen">
+      <div class="result-card" id="resultCard">
+        <div id="resultIcon" class="result-icon">🎉</div>
+        <p class="eyebrow">RESULT</p>
+        <h2 id="resultTitle">Perfect!</h2>
+        <p id="resultText" class="lead"></p>
+        <div id="resultDish" class="result-dish"></div>
+        <div id="comparison" class="comparison"></div>
+        <div class="result-actions">
+          <button class="secondary" id="tryAgain">Try again</button>
+          <button class="primary" id="switchAfterResult">Switch roles</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
