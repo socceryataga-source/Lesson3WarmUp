@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mystery Food Mission</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section id="homeScreen" class="screen active">
+      <div class="hero-card glass">
+        <div class="hero-badge">PAIR WORK · LISTENING · SPEAKING · SEARCH</div>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h1>Mystery Food Mission</h1>
+            <p class="lead">One student describes a famous food from around the world. The partner listens, types the clues, and searches for the answer.</p>
+            <div class="rule-grid">
+              <div class="rule-card"><span>1</span><p>Choose <strong>Reader</strong> or <strong>Detective</strong>.</p></div>
+              <div class="rule-card"><span>2</span><p>Use the same <strong>Food Code</strong>.</p></div>
+              <div class="rule-card"><span>3</span><p>Do <strong>not</strong> say the food name or country.</p></div>
+            </div>
+            <div class="home-actions">
+              <button class="primary big" data-role="reader">🗣️ Student A — Reader</button>
+              <button class="secondary big" data-role="listener">🔎 Student B — Detective</button>
+            </div>
+          </div>
+          <div class="hero-illustration">
+            <div class="floating-card taco">🌮</div>
+            <div class="floating-card pretzel">🥨</div>
+            <div class="floating-card croissant">🥐</div>
+            <div class="floating-card churros">🍫</div>
+            <div class="mission-card">
+              <div class="mission-top">TODAY'S MISSION</div>
+              <h3>Can you find the food?</h3>
+              <p>Look carefully. Describe clearly. Search smartly.</p>
+              <div class="mini-pills">
+                <span>shape</span>
+                <span>color</span>
+                <span>ingredients</span>
+                <span>taste</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="setupScreen" class="screen">
+      <div class="panel compact glass">
+        <button class="text-btn" id="backHome">← Back to Home</button>
+        <p class="eyebrow" id="setupRoleLabel">STUDENT A — READER</p>
+        <h2>Choose a Food Code</h2>
+        <p class="muted">Both partners choose the same code. The food name stays hidden until the end.</p>
+        <div id="codeGrid" class="code-grid"></div>
+      </div>
+    </section>
+
+    <section id="readerScreen" class="screen">
+      <div class="topbar">
+        <div>
+          <p class="eyebrow">STUDENT A — READER</p>
+          <h2>Describe the mystery food</h2>
+        </div>
+        <div class="code-badge">Code <strong id="readerCode">A</strong></div>
+      </div>
+
+      <div class="reader-layout">
+        <div class="panel glass art-panel">
+          <div class="section-heading">
+            <h3>Mystery Food</h3>
+            <span class="tiny">Do not say the food name or country.</span>
+          </div>
+          <div class="art-frame">
+            <img id="readerImage" alt="Mystery food illustration" />
+          </div>
+          <div class="speaker-tips">
+            <h4>What can you talk about?</h4>
+            <div id="readerClues" class="clue-chips"></div>
+          </div>
+        </div>
+
+        <div class="stack-col">
+          <div class="panel glass">
+            <h3>Useful phrases</h3>
+            <div class="phrase-list">
+              <p>It looks like ...</p>
+              <p>It is long / round / twisted / crispy / soft.</p>
+              <p>It has ... on top.</p>
+              <p>You can see ... inside.</p>
+              <p>People often eat it with ...</p>
+            </div>
+          </div>
+          <div class="panel glass answer-panel">
+            <h3>Answer card</h3>
+            <p class="muted">Keep this hidden until the pair is ready.</p>
+            <button class="ghost" id="revealReaderAnswer">Reveal answer</button>
+            <div id="readerAnswerCard" class="answer-card hidden"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-actions">
+        <button class="secondary" id="readerChange">Change code</button>
+        <button class="primary" id="readerSwitch">Switch roles</button>
+      </div>
+    </section>
+
+    <section id="listenerScreen" class="screen">
+      <div class="topbar">
+        <div>
+          <p class="eyebrow">STUDENT B — DETECTIVE</p>
+          <h2>Listen. Type. Search.</h2>
+        </div>
+        <div class="code-badge">Code <strong id="listenerCode">A</strong></div>
+      </div>
+
+      <div class="listener-layout">
+        <div class="panel glass notebook-panel">
+          <div class="section-heading">
+            <h3>Your notes</h3>
+            <span id="charCount" class="tiny">0 characters</span>
+          </div>
+          <textarea id="noteInput" placeholder="Type what you hear here...
+Example: It is a curved bread. It is brown, has white salt on it, and looks twisted."></textarea>
+          <div class="note-tools">
+            <button class="ghost" id="clearNotes">Clear</button>
+            <button class="ghost" id="copyPrompt">Create AI prompt</button>
+          </div>
+          <div id="promptBox" class="prompt-box hidden"></div>
+        </div>
+
+        <div class="stack-col">
+          <div class="panel glass search-panel">
+            <h3>Search tools</h3>
+            <p class="muted">Use your notes to search for the food. The site opens in a new tab.</p>
+            <div class="search-actions">
+              <button class="primary" id="searchWeb">🌐 Search the Web</button>
+              <button class="secondary" id="searchImages">🖼️ Search Images</button>
+            </div>
+            <div class="search-preview">
+              <p class="tiny">Search query preview</p>
+              <div id="queryPreview" class="query-pill">(Your notes will appear here.)</div>
+            </div>
+          </div>
+
+          <div class="panel glass detective-panel">
+            <h3>Detective help</h3>
+            <div class="clue-chips alt">
+              <span>shape</span>
+              <span>color</span>
+              <span>inside</span>
+              <span>on top</span>
+              <span>sweet / salty</span>
+              <span>fried / baked</span>
+              <span>bread / rice / beans</span>
+              <span>sauce</span>
+            </div>
+          </div>
+
+          <div class="panel glass answer-panel">
+            <h3>Check the answer</h3>
+            <p class="muted">After searching, reveal the official answer and compare it with your guess.</p>
+            <button class="ghost" id="revealListenerAnswer">Reveal answer</button>
+            <div id="listenerAnswerCard" class="answer-card hidden"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-actions">
+        <button class="secondary" id="listenerChange">Change code</button>
+        <button class="primary" id="listenerSwitch">Switch roles</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
