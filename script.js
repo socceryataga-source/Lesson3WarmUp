@@ -1,103 +1,83 @@
 const foods = [
   {
     code: 'A',
+    name: 'Borscht',
+    country: 'Ukraine / Eastern Europe',
+    image: 'assets/borscht.png',
+    clueChips: ['deep red soup', 'vegetables', 'white cream on top', 'served in a bowl', 'hot soup'],
+    answerClues: 'A deep red beet soup with vegetables, often served with a spoonful of sour cream and herbs.'
+  },
+  {
+    code: 'B',
+    name: 'Churros',
+    country: 'Spain',
+    image: 'assets/churros.png',
+    clueChips: ['long fried sticks', 'sugar', 'crispy outside', 'sweet snack', 'chocolate dip'],
+    answerClues: 'Long fried dough sticks covered with sugar, often served with chocolate sauce.'
+  },
+  {
+    code: 'C',
+    name: 'Laksa',
+    country: 'Malaysia / Singapore',
+    image: 'assets/Laksa.png',
+    clueChips: ['orange soup', 'noodles', 'shrimp', 'bean sprouts', 'lime and herbs'],
+    answerClues: 'A spicy noodle soup with a rich orange broth, often served with shrimp, bean sprouts, herbs, and lime.'
+  },
+  {
+    code: 'D',
+    name: 'Macarons',
+    country: 'France',
+    image: 'assets/macarons.png',
+    clueChips: ['small round sweets', 'many colors', 'cream inside', 'smooth shells', 'dessert'],
+    answerClues: 'Small colorful sandwich cookies with smooth shells and a cream filling in the middle.'
+  },
+  {
+    code: 'E',
+    name: 'Moussaka',
+    country: 'Greece',
+    image: 'assets/moussaka.png',
+    clueChips: ['square slice', 'many layers', 'eggplant', 'meat', 'creamy top'],
+    answerClues: 'A baked layered dish made with eggplant and meat, with a thick creamy sauce on top.'
+  },
+  {
+    code: 'F',
+    name: 'Nachos',
+    country: 'Mexico',
+    image: 'assets/nachos.png',
+    clueChips: ['triangle chips', 'melted cheese', 'green peppers', 'tomatoes', 'shared snack'],
+    answerClues: 'Corn chips covered with melted cheese and toppings such as tomatoes and jalapeños.'
+  },
+  {
+    code: 'G',
+    name: 'Pad Thai',
+    country: 'Thailand',
+    image: 'assets/pad thai.png',
+    clueChips: ['flat noodles', 'shrimp', 'bean sprouts', 'egg', 'lime and peanuts'],
+    answerClues: 'A Thai stir-fried noodle dish often served with shrimp, egg, bean sprouts, peanuts, and lime.'
+  },
+  {
+    code: 'H',
+    name: 'Paella',
+    country: 'Spain',
+    image: 'assets/paella.png',
+    clueChips: ['large pan', 'yellow rice', 'shrimp', 'mussels', 'lemon'],
+    answerClues: 'A Spanish rice dish cooked in a wide pan, often with seafood, vegetables, and lemon.'
+  },
+  {
+    code: 'I',
     name: 'Pretzel',
     country: 'Germany',
     image: 'assets/pretzel.png',
-    emoji: '🥨',
-    shortLabel: 'Twisted bread',
     clueChips: ['twisted shape', 'brown bread', 'white salt', 'baked', 'snack'],
     answerClues: 'A dark golden-brown baked bread snack with a twisted shape and coarse salt on top.'
   },
   {
-    code: 'B',
+    code: 'J',
     name: 'Taco',
     country: 'Mexico',
     image: 'assets/taco.png',
-    emoji: '🌮',
-    shortLabel: 'Folded shell',
-    clueChips: ['folded shell', 'meat or beans', 'lettuce', 'tomato', 'handheld'],
+    clueChips: ['folded shell', 'meat', 'lettuce', 'tomato', 'cheese'],
     answerClues: 'A folded corn or flour shell filled with meat, lettuce, tomato, cheese, and sometimes salsa.'
-  },
-  {
-    code: 'C',
-    name: 'Paella',
-    country: 'Spain',
-    image: 'assets/paella.png',
-    emoji: '🥘',
-    shortLabel: 'Seafood rice',
-    clueChips: ['large pan', 'yellow rice', 'shrimp', 'mussels', 'shared dish'],
-    answerClues: 'A Spanish rice dish cooked in a wide pan, often yellow, with seafood, vegetables, and lemon.'
-  },
-  {
-    code: 'D',
-    name: 'Croissant',
-    country: 'France',
-    image: 'assets/croissant.png',
-    emoji: '🥐',
-    shortLabel: 'Curved pastry',
-    clueChips: ['crescent shape', 'layers', 'buttery', 'bakery', 'breakfast'],
-    answerClues: 'A flaky, buttery pastry shaped like a crescent moon.'
-  },
-  {
-    code: 'E',
-    name: 'Churros',
-    country: 'Spain',
-    image: 'assets/churros.png',
-    emoji: '🍩',
-    shortLabel: 'Sugar sticks',
-    clueChips: ['long fried sticks', 'sugar', 'crispy outside', 'sweet snack', 'chocolate dip'],
-    answerClues: 'Long fried dough sticks covered with sugar, often eaten with chocolate sauce.'
-  },
-  {
-    code: 'F',
-    name: 'Falafel Wrap',
-    country: 'Middle East',
-    image: 'assets/falafel_wrap.png',
-    emoji: '🥙',
-    shortLabel: 'Wrap with balls',
-    clueChips: ['flat bread wrap', 'round fried balls', 'salad', 'sauce', 'street food'],
-    answerClues: 'A wrap made with flat bread, filled with crispy chickpea balls, salad, and sauce.'
-  },
-  {
-    code: 'G',
-    name: 'Nachos',
-    country: 'Mexico',
-    image: 'assets/nachos.png',
-    emoji: '🧀',
-    shortLabel: 'Chips with cheese',
-    clueChips: ['triangle chips', 'melted cheese', 'jalapeños', 'tomatoes', 'shared snack'],
-    answerClues: 'Corn chips covered with melted cheese and toppings such as tomatoes and jalapeños.'
-  },
-  {
-    code: 'H',
-    name: 'Macarons',
-    country: 'France',
-    image: 'assets/macarons.png',
-    emoji: '🍪',
-    shortLabel: 'Colorful sandwich cookies',
-    clueChips: ['small round sweets', 'many colors', 'cream inside', 'delicate', 'dessert'],
-    answerClues: 'Small colorful sandwich cookies with smooth shells and cream in the middle.'
-  },
-  {
-    code: 'I',
-    name: 'Burrito',
-    country: 'Mexico',
-    image: 'assets/burrito.png',
-    emoji: '🌯',
-    shortLabel: 'Rolled wrap',
-    clueChips: ['large rolled tortilla', 'rice', 'beans', 'meat', 'closed on both ends'],
-    answerClues: 'A large tortilla rolled around rice, beans, meat, and vegetables.'
-  },
-  {
-    code: 'J',
-    name: 'Döner Kebab',
-    country: 'Turkey / Germany',
-    image: 'assets/doner_kebab.png',
-    emoji: '🥪',
-    shortLabel: 'Stuffed pita',
-    clueChips: ['meat slices', 'pita bread', 'salad', 'sauce', 'street food'],
-    answerClues: 'Pita or flat bread stuffed with sliced meat, salad, and sauce.'
   }
 ];
 
