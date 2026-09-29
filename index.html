@@ -28,20 +28,20 @@
               <button class="secondary big" data-role="listener">🔎 Student B — Detective</button>
             </div>
           </div>
-          <div class="hero-illustration">
-            <div class="floating-card taco">🌮</div>
-            <div class="floating-card pretzel">🥨</div>
-            <div class="floating-card croissant">🥐</div>
-            <div class="floating-card churros">🍫</div>
+          <div class="hero-illustration neutral-hero">
+            <div class="floating-card note">📝</div>
+            <div class="floating-card search">🔎</div>
+            <div class="floating-card talk">💬</div>
+            <div class="floating-card mystery">?</div>
             <div class="mission-card">
               <div class="mission-top">TODAY'S MISSION</div>
-              <h3>Can you find the food?</h3>
-              <p>Look carefully. Describe clearly. Search smartly.</p>
+              <h3>Can your partner find it?</h3>
+              <p>Describe carefully. Listen closely. Search from the clues.</p>
               <div class="mini-pills">
-                <span>shape</span>
-                <span>color</span>
-                <span>ingredients</span>
-                <span>taste</span>
+                <span>describe</span>
+                <span>listen</span>
+                <span>type</span>
+                <span>search</span>
               </div>
             </div>
           </div>
@@ -53,8 +53,8 @@
       <div class="panel compact glass">
         <button class="text-btn" id="backHome">← Back to Home</button>
         <p class="eyebrow" id="setupRoleLabel">STUDENT A — READER</p>
-        <h2>Choose a Food Code</h2>
-        <p class="muted">Both partners choose the same code. The food name stays hidden until the end.</p>
+        <h2>Choose a Code</h2>
+        <p class="muted">Both partners choose the same code. No clue about the answer is shown here.</p>
         <div id="codeGrid" class="code-grid"></div>
       </div>
     </section>
@@ -94,12 +94,7 @@
               <p>People often eat it with ...</p>
             </div>
           </div>
-          <div class="panel glass answer-panel">
-            <h3>Answer card</h3>
-            <p class="muted">Keep this hidden until the pair is ready.</p>
-            <button class="ghost" id="revealReaderAnswer">Reveal answer</button>
-            <div id="readerAnswerCard" class="answer-card hidden"></div>
-          </div>
+
         </div>
       </div>
 
@@ -125,7 +120,7 @@
             <span id="charCount" class="tiny">0 characters</span>
           </div>
           <textarea id="noteInput" placeholder="Type what you hear here...
-Example: It is a curved bread. It is brown, has white salt on it, and looks twisted."></textarea>
+Write only the details your partner tells you."></textarea>
           <div class="note-tools">
             <button class="ghost" id="clearNotes">Clear</button>
             <button class="ghost" id="copyPrompt">Create AI prompt</button>
@@ -148,16 +143,16 @@ Example: It is a curved bread. It is brown, has white salt on it, and looks twis
           </div>
 
           <div class="panel glass detective-panel">
-            <h3>Detective help</h3>
+            <h3>Detective checklist</h3>
             <div class="clue-chips alt">
               <span>shape</span>
               <span>color</span>
-              <span>inside</span>
-              <span>on top</span>
-              <span>sweet / salty</span>
-              <span>fried / baked</span>
-              <span>bread / rice / beans</span>
-              <span>sauce</span>
+              <span>size</span>
+              <span>position</span>
+              <span>texture</span>
+              <span>ingredients</span>
+              <span>cooking method</span>
+              <span>how it is served</span>
             </div>
           </div>
 

@@ -65,10 +65,10 @@ button:hover{transform:translateY(-1px)}
 .big{padding:16px 22px;font-size:1.02rem}
 .hero-illustration{position:relative;min-height:430px;display:grid;place-items:center}
 .floating-card{position:absolute;width:92px;height:92px;border-radius:24px;display:grid;place-items:center;font-size:2.6rem;background:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.72);box-shadow:var(--shadow)}
-.floating-card.taco{top:18px;left:12px;transform:rotate(-10deg)}
-.floating-card.pretzel{top:42px;right:30px;transform:rotate(8deg)}
-.floating-card.croissant{bottom:34px;left:18px;transform:rotate(10deg)}
-.floating-card.churros{bottom:30px;right:16px;transform:rotate(-8deg)}
+.floating-card.note{top:18px;left:12px;transform:rotate(-10deg)}
+.floating-card.search{top:42px;right:30px;transform:rotate(8deg)}
+.floating-card.talk{bottom:34px;left:18px;transform:rotate(10deg)}
+.floating-card.mystery{bottom:30px;right:16px;transform:rotate(-8deg);font-family:"Baloo 2",system-ui,sans-serif;font-size:3.2rem;font-weight:800;color:var(--accent-2)}
 .mission-card{width:min(100%,380px);padding:28px;background:linear-gradient(160deg,rgba(255,255,255,.9),rgba(255,250,243,.88));border:1px solid rgba(255,255,255,.7);border-radius:28px;box-shadow:var(--shadow)}
 .mission-top{display:inline-block;background:#fff1dc;color:#b56a09;padding:7px 12px;border-radius:999px;font-size:.76rem;font-weight:800;letter-spacing:.08em}
 .mission-card h3{font-family:"Baloo 2", system-ui, sans-serif;font-size:2rem;margin:14px 0 8px}
@@ -79,10 +79,8 @@ button:hover{transform:translateY(-1px)}
 .compact h2,.topbar h2{font-family:"Baloo 2", system-ui, sans-serif;font-size:2.5rem;line-height:1;margin:8px 0 10px}
 .muted,.tiny{color:var(--muted)}
 .code-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:24px}
-.code-btn{position:relative;padding:18px 10px 16px;background:linear-gradient(180deg,#fff,#fff8f0);border:2px solid transparent;border-radius:22px;text-align:center;overflow:hidden}
+.code-btn{position:relative;padding:26px 10px;background:linear-gradient(180deg,#fff,#fff8f0);border:2px solid transparent;border-radius:22px;text-align:center;overflow:hidden}
 .code-btn .code-letter{font-family:"Baloo 2";font-size:2.2rem;line-height:1;color:var(--ink)}
-.code-btn .code-emoji{font-size:2rem;display:block;margin-bottom:4px}
-.code-btn .code-label{font-size:.8rem;color:var(--muted);display:block;margin-top:4px}
 .code-btn:hover{border-color:var(--accent);box-shadow:0 12px 24px rgba(255,107,87,.12)}
 .topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:10px 0 22px}
 .code-badge{background:linear-gradient(135deg,#222836,#36405a);color:#fff;border-radius:999px;padding:12px 16px;box-shadow:0 12px 26px rgba(34,40,54,.18)}

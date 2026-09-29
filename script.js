@@ -120,10 +120,7 @@ function setupCodes(){
   foods.forEach(food => {
     const btn = document.createElement('button');
     btn.className = 'code-btn';
-    btn.innerHTML = `
-      <span class="code-emoji">${food.emoji}</span>
-      <span class="code-letter">${food.code}</span>
-      <span class="code-label">${food.shortLabel}</span>`;
+    btn.innerHTML = `<span class="code-letter">${food.code}</span>`;
     btn.addEventListener('click', () => openFood(food.code));
     grid.appendChild(btn);
   });
@@ -159,9 +156,6 @@ function renderReader(){
   document.getElementById('readerImage').src = currentFood.image;
   const clueBox = document.getElementById('readerClues');
   clueBox.innerHTML = currentFood.clueChips.map(chip => `<span>${chip}</span>`).join('');
-  const answerCard = document.getElementById('readerAnswerCard');
-  answerCard.classList.add('hidden');
-  answerCard.innerHTML = makeAnswerCard();
   show('readerScreen');
 }
 
@@ -240,5 +234,4 @@ document.getElementById('clearNotes').addEventListener('click', () => {
 document.getElementById('copyPrompt').addEventListener('click', copyPrompt);
 document.getElementById('searchWeb').addEventListener('click', () => openSearch('web'));
 document.getElementById('searchImages').addEventListener('click', () => openSearch('images'));
-document.getElementById('revealReaderAnswer').addEventListener('click', () => document.getElementById('readerAnswerCard').classList.toggle('hidden'));
 document.getElementById('revealListenerAnswer').addEventListener('click', () => document.getElementById('listenerAnswerCard').classList.toggle('hidden'));
