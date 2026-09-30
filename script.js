@@ -215,3 +215,121 @@ document.getElementById('copyPrompt').addEventListener('click', copyPrompt);
 document.getElementById('searchWeb').addEventListener('click', () => openSearch('web'));
 document.getElementById('searchImages').addEventListener('click', () => openSearch('images'));
 document.getElementById('revealListenerAnswer').addEventListener('click', () => document.getElementById('listenerAnswerCard').classList.toggle('hidden'));
+
+// ------------------------------------------------------------
+// Student A language help: Chrome built-in Translator API
+// Japanese -> English, entirely inside the same page.
+// ------------------------------------------------------------
+let jaToEnTranslator = null;
+let translatorInitPromise = null;
+let translateTimer = null;
+
+function setTranslatorStatus(text, state = '') {
+  const el = document.getElementById('translatorStatus');
+  if (!el) return;
+  el.textContent = text;
+  el.className = `translator-status${state ? ' ' + state : ''}`;
+}
+
+function setTranslatorOutput(text, isPlaceholder = false) {
+  const el = document.getElementById('enOutput');
+  if (!el) return;
+  el.textContent = text;
+  el.classList.toggle('placeholder', isPlaceholder);
+}
+
+function showTranslatorProgress(show) {
+  const el = document.getElementById('translatorProgress');
+  if (!el) return;
+  el.classList.toggle('hidden', !show);
+}
+
+async function initTranslator() {
+  if (jaToEnTranslator) return jaToEnTranslator;
+  if (translatorInitPromise) return translatorInitPromise;
+
+  translatorInitPromise = (async () => {
+    const progressFill = document.getElementById('translatorProgressFill');
+    const progressText = document.getElementById('translatorProgressText');
+
+    if (!('Translator' in self)) {
+      setTranslatorStatus('Chrome required', 'error');
+      setTranslatorOutput('この端末ではChromeの翻訳機能を利用できません。Chromeを最新版に更新して再読み込みしてください。', true);
+      return null;
+    }
+
+    try {
+      setTranslatorStatus('Checking…', 'loading');
+      const options = { sourceLanguage: 'ja', targetLanguage: 'en' };
+      const availability = await Translator.availability(options);
+
+      if (availability === 'unavailable') {
+        setTranslatorStatus('Unavailable', 'error');
+        setTranslatorOutput('このChromeでは日本語→英語の翻訳モデルを利用できません。', true);
+        return null;
+      }
+
+      const needsDownload = availability === 'downloadable' || availability === 'downloading';
+      if (needsDownload) {
+        setTranslatorStatus('Preparing…', 'loading');
+        showTranslatorProgress(true);
+      }
+
+      jaToEnTranslator = await Translator.create({
+        ...options,
+        monitor(monitor) {
+          monitor.addEventListener('downloadprogress', (event) => {
+            const loaded = typeof event.loaded === 'number' ? event.loaded : 0;
+            if (progressFill) progressFill.style.width = `${Math.round(loaded * 100)}%`;
+            if (progressText) progressText.textContent = `Preparing translation model… ${Math.round(loaded * 100)}%`;
+          });
+        }
+      });
+
+      showTranslatorProgress(false);
+      setTranslatorStatus('Ready', 'ready');
+      setTranslatorOutput('English translation will appear here.', true);
+      return jaToEnTranslator;
+    } catch (error) {
+      console.error('Translator initialization failed:', error);
+      showTranslatorProgress(false);
+      setTranslatorStatus('Unavailable', 'error');
+      setTranslatorOutput('翻訳機能を準備できませんでした。Chromeを最新版に更新して再読み込みしてください。', true);
+      return null;
+    }
+  })();
+
+  return translatorInitPromise;
+}
+
+async function translateJapaneseInput() {
+  const input = document.getElementById('jaInput');
+  if (!input) return;
+  const text = input.value.trim();
+
+  if (!text) {
+    setTranslatorOutput('English translation will appear here.', true);
+    return;
+  }
+
+  setTranslatorOutput('Translating…', true);
+  const translator = await initTranslator();
+  if (!translator) return;
+
+  try {
+    const translated = await translator.translate(text);
+    setTranslatorOutput(translated || '');
+  } catch (error) {
+    console.error('Translation failed:', error);
+    setTranslatorOutput('翻訳できませんでした。文を短くしてもう一度試してください。', true);
+  }
+}
+
+const jaInput = document.getElementById('jaInput');
+if (jaInput) {
+  jaInput.addEventListener('focus', () => { initTranslator(); });
+  jaInput.addEventListener('input', () => {
+    clearTimeout(translateTimer);
+    translateTimer = setTimeout(translateJapaneseInput, 350);
+  });
+}

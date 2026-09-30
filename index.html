@@ -95,6 +95,26 @@
             </div>
           </div>
 
+          <div class="panel glass translator-panel">
+            <div class="translator-heading">
+              <div>
+                <p class="eyebrow translator-eyebrow">LANGUAGE HELP</p>
+                <h3>日本語 → English</h3>
+              </div>
+              <span id="translatorStatus" class="translator-status">Preparing…</span>
+            </div>
+            <p class="muted translator-note">英語で言えないときだけ使おう。日本語を入力すると、Chrome上で英語に翻訳されます。</p>
+            <label class="translator-label" for="jaInput">日本語</label>
+            <textarea id="jaInput" class="translator-input" placeholder="例：上に白いクリームがのっている"></textarea>
+            <div class="translate-arrow">↓</div>
+            <label class="translator-label" for="enOutput">English</label>
+            <div id="enOutput" class="translator-output" aria-live="polite">English translation will appear here.</div>
+            <div id="translatorProgress" class="translator-progress hidden">
+              <div class="translator-progress-bar"><span id="translatorProgressFill"></span></div>
+              <span id="translatorProgressText" class="tiny">Preparing translation model…</span>
+            </div>
+          </div>
+
         </div>
       </div>
 

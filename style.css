@@ -132,3 +132,25 @@ button:hover{transform:translateY(-1px)}
   .home-actions button,.search-actions button{width:100%}
   .compact{padding:22px}
 }
+
+/* Student A: Chrome built-in Japanese → English translator */
+.translator-panel{position:relative;overflow:hidden}
+.translator-panel::before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--accent-2),#7c5cff,#38b7a1)}
+.translator-heading{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:8px}
+.translator-heading h3{margin:2px 0 0}
+.translator-eyebrow{color:var(--accent-2);margin:0}
+.translator-status{flex:none;font-size:.76rem;font-weight:800;padding:7px 10px;border-radius:999px;background:#eef2ff;color:#5263b8;border:1px solid rgba(76,111,255,.18)}
+.translator-status.ready{background:#e9f8f2;color:#23765e;border-color:rgba(35,118,94,.16)}
+.translator-status.loading{background:#fff5df;color:#a66a12;border-color:rgba(166,106,18,.16)}
+.translator-status.error{background:#fff0ee;color:#b34b3d;border-color:rgba(179,75,61,.16)}
+.translator-note{font-size:.9rem;line-height:1.55;margin:4px 0 14px}
+.translator-label{display:block;font-size:.78rem;font-weight:800;letter-spacing:.06em;margin:8px 0 6px;color:#485063}
+.translator-input{width:100%;min-height:92px;border:1px solid rgba(120,108,91,.22);border-radius:18px;padding:13px 14px;background:rgba(255,255,255,.94);resize:vertical;line-height:1.6;outline:none}
+.translator-input:focus{border-color:var(--accent-2);box-shadow:0 0 0 4px rgba(76,111,255,.10)}
+.translate-arrow{text-align:center;font-size:1.15rem;color:var(--accent-2);font-weight:900;margin:4px 0}
+.translator-output{min-height:74px;border-radius:18px;padding:13px 14px;background:linear-gradient(180deg,#f8f9ff,#f3f6ff);border:1px solid rgba(76,111,255,.18);line-height:1.6;color:#26314d;white-space:pre-wrap}
+.translator-output.placeholder{color:var(--muted)}
+.translator-progress{margin-top:12px}
+.translator-progress-bar{height:8px;border-radius:999px;background:#eceef5;overflow:hidden}
+.translator-progress-bar span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--accent-2),#7c5cff);transition:width .2s ease}
+.translator-progress .tiny{display:block;margin-top:6px}
